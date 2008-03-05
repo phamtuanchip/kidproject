@@ -9,14 +9,24 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 
 /// <summary>
-/// Summary description for user
+/// Summary description for msAccessPlugin
 /// </summary>
-public class user
+public class msAccessPlugin : dataInterface 
 {
-	public user()
+	public msAccessPlugin()
 	{
 		//
 		// TODO: Add constructor logic here
 		//
 	}
+
+    #region dataInterface Members
+
+
+    public static userObj login(string userName, string userPass)
+    {
+        throw new Exception("The method or operation is not implemented.");
+    }
+
+    #endregion
 }

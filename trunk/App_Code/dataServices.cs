@@ -19,10 +19,14 @@ public class dataServices
 		// TODO: Add constructor logic here
 		//
 	}
+
+    public userObj getUser() { }
     public void saveUser() { }
     public void removeUser() { }
+    public product getProduct() { }
     public void saveProduct() { }
     public void removeProduct() { }
+    public category getCategory() { }
     public void saveCategory() { }
     public void removeCategory() { }
 }
