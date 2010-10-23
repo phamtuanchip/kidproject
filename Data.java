@@ -102,6 +102,13 @@ public class Data {
    * cho phep trung` nhau
    * O day anh dung LinkedHashMap vi LinkedHashMap da giup ta sap xep phan tu nao duoc add vao truoc thi 
    * xep truoc, add vao sau thi xep sau , co sap xep thu tu
+   * Ben canh o day em con thay anh su dung kieu <Long, Interger> day chinh la khai niem generics trong java
+   * http://download.oracle.com/javase/1.5.0/docs/guide/language/generics.html
+   * bao gio khai bao du lieu map list aray ... set .. deu nen khai bao kieu du lieu tra ve hoac kieu du lieu su dung
+   * trong runtime qua trinh chay chuong trinh dieu nay dam bao tiet kiem bo nho va khi viet code se check duoc 
+   * du lieu tra ve hoac su dung 1 cach tuong minh, tranh khoi class cast exception 
+   * 
+   *
    */
   private Map<Long, Integer> tempdata = new LinkedHashMap<Long, Integer>();
 

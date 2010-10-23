@@ -34,6 +34,14 @@ public class XMLDataProvider extends DataProvider {
   return null;
   }
 
+  
+  /**
+   * chu y den cac ham cai dat deu co chu @Override hoac ky tu @ ....
+   * cai nay la khai niem moi trong java 5 do la annotation 
+   * http://download.oracle.com/javase/tutorial/java/javaOO/annotations.html
+   * day cung la nhung khai bao de them metadata cho object, function hoac la khai bao de 
+   * java chay nhung thu do runtime
+   */
   @Override
   public void saveData(Data d) throws Exception {
    System.out.println("\n\n Luu giu lieu dang xml ");
