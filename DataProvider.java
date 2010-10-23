@@ -65,7 +65,12 @@ public abstract class DataProvider  implements DataLoader{
     d.giainhi[0] = bienDoiDulieu(prop,Data.KEY_NHI,0);
     d.giainhi[1] = bienDoiDulieu(prop,Data.KEY_NHI,1);
     
+    o day ta tay co su tuong dong ve index cua phan tu trong mang d.giaiba[0] 
+     va index cua gia tri duoc cat ra tu xml 
+     .split(MINUS)[0] ?? nen viet 1 ham tong quat de tinh toan lai do la ham bienDoiDulieu hoac ham nhapDulieu
+    
     d.giaiba[0] = Long.valueOf(prop.getProperty(Data.KEY_BA).split(MINUS)[0].trim());
+    
     d.giaiba[1] = Long.valueOf(prop.getProperty(Data.KEY_BA).split(MINUS)[1].trim());
     d.giaiba[2] = Long.valueOf(prop.getProperty(Data.KEY_BA).split(MINUS)[2].trim());
     d.giaiba[3] = Long.valueOf(prop.getProperty(Data.KEY_BA).split(MINUS)[3].trim());
@@ -117,6 +122,12 @@ public abstract class DataProvider  implements DataLoader{
     return Long.valueOf(prop.getProperty(key).trim());
   }
   
+  /**
+   * Dung ham nay da rut gon duoc tat ca nhung dong code ma anh comment o tren vi dung lai nhung thu don gian hon theo logic
+   * @param prop
+   * @param mangDulieu
+   * @param key
+   */
   private void nhapDulieu(Properties prop, long[] mangDulieu,String key) {
     for (int i=0 ; i < mangDulieu.length ; i++) {
      mangDulieu[i] = bienDoiDulieu(prop, key, i);
