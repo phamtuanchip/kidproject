@@ -50,12 +50,20 @@ public abstract class DataProvider  implements DataLoader{
     Properties prop = new Properties();
     prop.loadFromXML(new FileInputStream(filePath));
     
-    d.giaidacbiet[0] = Long.valueOf(prop.getProperty(Data.KEY_DB));
+    d.giaidacbiet[0] = bienDoiDulieu(prop, Data.KEY_DB);
     
-    d.giainhat[0] = Long.valueOf(prop.getProperty(Data.KEY_NHAT));
+    d.giainhat[0] = bienDoiDulieu(prop, Data.KEY_NHAT);
     
-    d.giainhi[0] = Long.valueOf(prop.getProperty(Data.KEY_NHI).split(MINUS)[0].trim());
-    d.giainhi[1] = Long.valueOf(prop.getProperty(Data.KEY_NHI).split(MINUS)[1].trim());
+    nhapDulieu(prop, d.giainhi, Data.KEY_NHI);
+    nhapDulieu(prop, d.giaiba, Data.KEY_BA);
+    nhapDulieu(prop, d.giaitu, Data.KEY_TU);
+    nhapDulieu(prop, d.giainam, Data.KEY_NAM);
+    nhapDulieu(prop, d.giaisau, Data.KEY_SAU);
+    nhapDulieu(prop, d.giaibay, Data.KEY_BAY);
+    
+    /*
+    d.giainhi[0] = bienDoiDulieu(prop,Data.KEY_NHI,0);
+    d.giainhi[1] = bienDoiDulieu(prop,Data.KEY_NHI,1);
     
     d.giaiba[0] = Long.valueOf(prop.getProperty(Data.KEY_BA).split(MINUS)[0].trim());
     d.giaiba[1] = Long.valueOf(prop.getProperty(Data.KEY_BA).split(MINUS)[1].trim());
@@ -86,6 +94,8 @@ public abstract class DataProvider  implements DataLoader{
     d.giaibay[2] = Long.valueOf(prop.getProperty(Data.KEY_BAY).split(MINUS)[2].trim());
     d.giaibay[3] = Long.valueOf(prop.getProperty(Data.KEY_BAY).split(MINUS)[3].trim());
       
+    */
+    
     System.out.println("\n\n data loaded !  " );
     
     } else if(Data.TYPE_ACESS.equals(d.getDatatype())) {
@@ -95,10 +105,22 @@ public abstract class DataProvider  implements DataLoader{
   }
   
   /**
-   * cac ban hoan toan co the dinh nghia mot ham private dieu nay interface khong the lam duoc
+   * cac ban hoan toan co the dinh nghia mot ham private  va co code 
+   * de thuc thi dieu nay interface khong the lam duoc
+   * 
    */
-  private void coutMydata() {
-    System.out.println("\n\n ham nay dung rieng cho abstract class !");
+  private long bienDoiDulieu(Properties prop, String key, int index) {
+    return Long.valueOf(prop.getProperty(key).split(MINUS)[index].trim());
+  }
+  
+  private long bienDoiDulieu(Properties prop, String key) {
+    return Long.valueOf(prop.getProperty(key).trim());
+  }
+  
+  private void nhapDulieu(Properties prop, long[] mangDulieu,String key) {
+    for (int i=0 ; i < mangDulieu.length ; i++) {
+     mangDulieu[i] = bienDoiDulieu(prop, key, i);
+    }
   }
 
 }

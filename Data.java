@@ -11,10 +11,34 @@ import java.util.Map;
  */
 public class Data {
 
+  /**
+   * Day chinh la khai niem cua tu khoa static va final 
+   * khai bao 1 lan va dung mai mai trong bo nho, giup ta khong phai tao ra
+   * qua nhieu object ma chi can dung lai. Khi khoi tao 1 doi tuong la static no se
+   * nam san trong bo nho
+   * con dung tu khoa final thi se khong set lai value cho bien do duoc nua de dam bao
+   * bien do khong bi thay doi
+   * 
+   *ham intern() trong string de dam bao la luon luon tra ve doi tuong da khoi tao ma khong 
+   *tao ra doi tuong khac
+   */
   public static final String TYPE_XML = "xml".intern() ;
   public static final String TYPE_ACESS = "mdb".intern() ;
+  
+  /**
+   * Nhung bien chi dung trong class thi dung private, va viet ham get, set cho bien nay neu muon
+   * truy xuat tu ngoai vao, cai nay la coding convention, khong nen viet 1 bien la public va truy 
+   * xuat truc tiep, nen truy xuat qua setter va getter  
+   *
+   */
   private String datatype_ = TYPE_XML;
 
+  /**
+   * kieu khai bao nay tiet kiem bo nho cho java bang cach dua luong so luong 
+   * cac so co the co trong moi mang du lueu cu the
+   * lam java quan trong nhat la memory (bo nho) nen khi viet code tranh viet thua, 
+   * dung du lieu thua thai
+   */
   protected long[] giaidacbiet = new long[1];
   protected long[] giainhat  = new long[1];
   protected long[] giainhi  = new long[2];
@@ -59,10 +83,10 @@ public class Data {
   public static final String KEY_SAU2 = "sau2".intern();
   public static final String KEY_SAU3 = "sau3".intern();
 
-  public static final String KEY_BAY1 = "bay1";  
-  public static final String KEY_BAY2 = "bay2";
-  public static final String KEY_BAY3 = "bay3";
-  public static final String KEY_BAY4 = "bay4";
+  public static final String KEY_BAY1 = "bay1".intern();;  
+  public static final String KEY_BAY2 = "bay2".intern();;
+  public static final String KEY_BAY3 = "bay3".intern();;
+  public static final String KEY_BAY4 = "bay4".intern();;
 
   private long[] capsochuara = new long [100];
 
@@ -70,15 +94,53 @@ public class Data {
 
   private long[] tongso = new long[100];
 
+  /**
+   * o day the hien dac tinh tien ich cua map giup ta linh hoat hon trong viec su dung data 
+   * theo kieu cap gia tri : key va value. Dieu nay cung noi len su khac nhau cua Map va Set
+   * Map thi gia tri khong duoc sap xep, va co cap gia tri, cho phep la neu trung` key thi se replace value
+   * Set thi chi co element (phan tu) chu kg co cap gia tri, du lieu trong set thi co sap xep va khong
+   * cho phep trung` nhau
+   * O day anh dung LinkedHashMap vi LinkedHashMap da giup ta sap xep phan tu nao duoc add vao truoc thi 
+   * xep truoc, add vao sau thi xep sau , co sap xep thu tu
+   */
   private Map<Long, Integer> tempdata = new LinkedHashMap<Long, Integer>();
 
+  /**
+   * Ham khoi tao mac dinh cua doi tuong khong co tham so
+   * 
+   */
   public Data() { 
     taodulieu();
   }
 
+  /**
+   * ham khoi tao cua doi tuong co tham so 
+   * @param type
+   */
   public Data(String type) { 
     taodulieu();
     datatype_ = type; 
+  }
+  /**
+   * day cung la ham khoi tao doi tuong co tham so
+   * 2 ham nay the hien tinh overloading trong java, 2 ham giong nhau co cung so luong tham so
+   * nhung kieu du lieu tham so khac nhau thi cai dat hoac goi cac ham khac nhau
+   * @param capsodara
+   */
+  public Data(long[] capsodara) { 
+    taodulieu();
+    this.capsodara = capsodara; 
+  }
+  
+  /**
+   * day cung la ham khoi tao doi tuong co tham so
+   * 2 ham nay the hien tinh overloading trong java, 2 ham giong nhau nhung khac 
+   * nhau ve so luong tham so thi cai dat thuc thi khac nhau
+   * @param capsodara
+   */
+  public Data(long[] capsodara, long[] tongso) { 
+    this.tongso = tongso;
+    this.capsodara = capsodara; 
   }
 
   public long[] taodulieu() {
@@ -98,7 +160,14 @@ public class Data {
     return tongso;
   }
 
-  public long kiemtraso(long so) {
+  /**
+   * ham nay duoc viet rieng ra boi vi no lam 1 cong viec giong nhau va lam nhieu lan
+   * chinh vi vay nen viet nhung ham hay phai dung den ra 1 ham rieng va tham so hoa 
+   * len de lam viec tien ich hon nhieu
+   * @param so
+   * @return
+   */
+  private long kiemtraso(long so) {
 
     String st = String.valueOf(so);
     if (st.length() > 1) {
@@ -108,6 +177,11 @@ public class Data {
     return so ;
   }
 
+  /**
+   * ban than ham nay goi rat nhieu den viec chuyen dinh dang string sang long  
+   * vi the nen minh da dung lai ham kiemtraso
+   * @return
+   */
   public long[] tinhtoanSodara() {
 
     getCapsodara()[0] = kiemtraso(giaidacbiet[0]) ;
