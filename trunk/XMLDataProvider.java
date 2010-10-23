@@ -39,6 +39,7 @@ public class XMLDataProvider extends DataProvider {
    * chu y den cac ham cai dat deu co chu @Override hoac ky tu @ ....
    * cai nay la khai niem moi trong java 5 do la annotation 
    * http://download.oracle.com/javase/tutorial/java/javaOO/annotations.html
+   * http://www.javavietnam.org/javavn/mvnforum/viewthread_thread,21764
    * day cung la nhung khai bao de them metadata cho object, function hoac la khai bao de 
    * java chay nhung thu do runtime
    */
